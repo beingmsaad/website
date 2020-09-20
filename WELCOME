@@ -1,0 +1,27 @@
+Hello new user,
+
+Welcome to the School of Electrical Engineering and Computer Science, UCF. 
+There are couple things you may want to know.
+
+  - How to get help: If you have any trouble using the systems, please 
+	email to us at help@eecs.ucf.edu.
+
+  - To join general mailing list: Please send email to general-request@cs.ucf.edu
+	with the Subject: subscribe.
+
+  - What machines can you login to: monroe is the main computing server. 
+
+  - To print out your postscript file, say x.ps,
+	   lpr -Plw x.ps
+
+  - To create you own home page, 
+
+	   - create the directory called public_html under your home directory
+	   - name your home page index.html and put it under public_html
+
+    Your URL will be http://www.cs.ucf.edu/~<loginname>.
+	
+
+Enjoy,
+
+Tech Support

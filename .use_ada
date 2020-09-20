@@ -1,0 +1,10 @@
+#
+# Environment setup for gnat-3.11
+#
+setenv GCC_EXEC_PREFIX  /usr/local/apps/gnat-3.11/lib/gcc-lib/sparc-sun-solaris2.5.1/2.8.1/
+setenv ADA_INCLUDE_PATH /usr/local/apps/gnat-3.11/lib/gcc-lib/sparc-sun-solaris2.5.1/2.8.1/adainclude
+setenv ADA_OBJECTS_PATH /usr/local/apps/gnat-3.11/lib/gcc-lib/sparc-sun-solaris2.5.1/2.8.1/adalib
+setenv LD_RUN_PATH      /usr/local/apps/gnat-3.11/lib/gcc-lib/sparc-sun-solaris2.5.1/2.8.1/adalib
+setenv C_INCLUDE_PATH   /usr/local/apps/gnat-3.11/lib/gcc-lib/sparc-sun-solaris2.5.1/2.8.1/include
+setenv PATH /usr/local/apps/gnat-3.11/bin:$PATH
+

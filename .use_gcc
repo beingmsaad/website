@@ -1,0 +1,94 @@
+#   This file is used to set parameters
+# for the c-shell, this gets interpreted by the c-shell
+# everytime a c-shell is invoked.
+#   This file gets interpreted before the .login during
+# initial login.
+
+set USER=`whoami`
+
+# need the unset because comma 
+# is now interpreted by the shell as previous command
+# as well as the ; for substitution
+unset histchars
+
+# -- Pick a window system from below --
+#
+# Set X window system as my default system
+#set mychoice=xinit
+# Set openwin as my default window system 
+set mychoice=openwin
+# Set sunview as my default window system 
+#set mychoice=sunview
+
+#         set up search path
+
+# add directories for local commands
+set lpath = (/usr/local/bin /usr/local/apps/gcc-2.7.2.3-with-ada/bin /usr/lang /usr/local /usr/local/bin)
+if ( ${?mychoice} != 0 ) then
+	if ( ${mychoice} == "openwin" ) then
+		set lpath = ( /usr/openwin/bin/xview /usr/openwin/bin $lpath )
+	endif
+	if ( ${mychoice} == "xinit" ) then
+		set lpath = ( /usr/bin/X11 $lpath )
+	endif
+endif
+
+set path=(. ~/bin $lpath /usr/bsd /usr/ucb /usr/bin /bin /usr/bin/X11 /usr/hosts /etc /usr/etc /usr/hapse/bin)
+
+#set lcd = ( )  #  add parents of frequently used directories
+#set cdpath = (.. ~ ~/bin ~/src $lcd)
+
+#--------- skip remaining setup if not an interactive shell --------
+if ($?prompt == 0) exit
+
+if (`hostname` == eola.cs.ucf.edu) then
+	set mail=(60 /usr/mail/$USER)
+else
+	set mail=(60 /usr/spool/mail/$USER)
+endif
+
+# this changes the prompt, by default the ,% is interpreted
+# by the shell to mean current command number
+
+set temp=`hostname | awk -F. '{print $1}'`
+set prompt="$temp ,% "
+
+# gives 1000 entries for history
+set history=20
+# this changes the histchars
+# , is for previous command
+# ; is for substitution
+
+set histchars=',;'
+# this forces you to type exit or logout to exit the session
+set ignoreeof
+set noclobber
+set notify
+
+# all files created will default to non-write for
+# public modes.
+umask 002
+
+#
+#  On eola, if the users .cshrc file has the group sys then when the user
+#  does an su, his .cshrc file will be run.  We need to source the root's
+#  /.cshrc file because he is too dumb to do so himself.
+#
+if (`hostname` == eola.cs.ucf.edu) then
+	alias mail mailx
+endif
+
+setenv XDVIFONTS "/usr/local/lib/tex/fonts:/usr/local/lib/tex/fonts/pxl:/usr/local/lib/tex/fonts/gf"
+
+source ~/.alias
+
+setenv GCC_EXEC_PREFIX  /usr/local/lib/gcc-lib/sparc-sun-solaris2.5.1/2.95.2/
+#
+# Environment setup for gnat-3.11
+#
+#setenv GCC_EXEC_PREFIX  /usr/local/apps/gnat-3.11/lib/gcc-lib/sparc-sun-solaris2.5.1/2.8.1/
+#setenv ADA_INCLUDE_PATH /usr/local/apps/gnat-3.11/lib/gcc-lib/sparc-sun-solaris2.5.1/2.8.1/adainclude
+#setenv ADA_OBJECTS_PATH /usr/local/apps/gnat-3.11/lib/gcc-lib/sparc-sun-solaris2.5.1/2.8.1/adalib
+#setenv LD_RUN_PATH      /usr/local/apps/gnat-3.11/lib/gcc-lib/sparc-sun-solaris2.5.1/2.8.1/adalib
+#setenv C_INCLUDE_PATH   /usr/local/apps/gnat-3.11/lib/gcc-lib/sparc-sun-solaris2.5.1/2.8.1/include
+#setenv PATH /usr/local/apps/gnat-3.11/bin:$PATH

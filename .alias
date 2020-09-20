@@ -1,0 +1,28 @@
+# 
+#  .alias file - revised 3/24/94
+#
+
+alias d         dirs
+alias f         finger
+alias h         'history -r | more'
+alias j         jobs -l
+alias l         less
+alias m         more
+alias ls        ls -F
+alias la        ls -aF
+alias lal       ls -laF
+alias ll        ls -l
+alias lo        logout
+alias rw        rwho
+alias so        source
+alias sus       suspend
+alias sw        'pushd +1'
+alias to        pushd
+alias bk        popd
+alias rn        rn -e -m -S -/
+alias rm        rm -i
+alias mv        mv -i
+alias cp        cp -i
+alias xinit     source /usr/local/bin/use_x11r5
+alias openwin   source /usr/local/bin/use_openwin3
+
